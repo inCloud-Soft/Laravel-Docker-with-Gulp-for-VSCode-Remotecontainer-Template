@@ -1,0 +1,47 @@
+{
+	"containerEnv": {
+	},
+	
+	"remoteEnv": {
+		// in container env
+		"PROJECT_NAME": "new_project",
+		"WORKSPACE_TIMEZONE": "Europe/Moscow"
+	},
+	
+	"name": "PHP-template",
+	// "build": {
+	// 	"dockerfile": "../docker/Dockerfile",
+	// 	"args": {}
+	// },
+	"dockerComposeFile": "../docker/docker-compose.yml",
+	"service": "apache2",
+	"workspaceFolder": "/",
+	
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"felixfbecker.php-debug",
+		"felixfbecker.php-intellisense",
+		"vincaslt.highlight-matching-tag"
+	],
+
+	"runArgs": [
+        //"-e", "PROJECT_NAME=new_project_my",
+        //"-e", "WORKSPACE_TIMEZONE=Europe/Moscow",
+        //"--env-file", "../docker/.env"
+		//"--env-file", "${localWorkspaceFolder}/.devcontainer/.env"
+    ],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "php -v",
+
+	// Comment out to connect as root instead.
+	// "remoteUser": "vscode"
+}

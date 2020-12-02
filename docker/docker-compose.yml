@@ -1,0 +1,50 @@
+version: '3'
+
+networks:
+  backend:
+
+services:
+  apache2:
+    #environment: 
+      #HISTFILE: "/root/.bash_history"
+    container_name: apache2
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      # args:
+      #   TZ: ${WORKSPACE_TIMEZONE}
+      #   PROJECT_NAME: ${PROJECT_NAME}
+    ports:
+      - "80:80"
+    volumes:
+      - ../site:/var/www
+      - ./share/main_server/php-ini/php.ini:/etc/php/7.4/apache2/php.ini
+      - ./share/main_server/phpinfo/:/var/www/public/
+      #- ./share/bash_history/.bash_history:/root/.bash_history
+    networks:
+      - backend
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.3
+    restart: always
+    volumes:
+      - ./share/db/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - backend
+  
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    volumes:
+      - ./share/phpmyadmin/php-ini/php.ini:/etc/php/7.4/apache2/php.ini
+      - ./share/phpmyadmin/phpinfo/phpinfo.php:/var/www/html/phpinfo.php
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - backend

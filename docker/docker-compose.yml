@@ -5,22 +5,17 @@ networks:
 
 services:
   apache2:
-    #environment: 
-      #HISTFILE: "/root/.bash_history"
     container_name: apache2
     build:
       context: ./
       dockerfile: Dockerfile
-      # args:
-      #   TZ: ${WORKSPACE_TIMEZONE}
-      #   PROJECT_NAME: ${PROJECT_NAME}
     ports:
       - "80:80"
     volumes:
       - ../site:/var/www
       - ./share/main_server/php-ini/php.ini:/etc/php/7.4/apache2/php.ini
-      - ./share/main_server/phpinfo/:/var/www/public/
-      #- ./share/bash_history/.bash_history:/root/.bash_history
+      #- ./share/main_server/phpinfo/:/var/www/dist/laravel/
+      - ./share/main_server/apache2/sites-enabled/:/etc/apache2/sites-enabled/
     networks:
       - backend
     depends_on:
@@ -41,7 +36,7 @@ services:
     restart: always
     volumes:
       - ./share/phpmyadmin/php-ini/php.ini:/etc/php/7.4/apache2/php.ini
-      - ./share/phpmyadmin/phpinfo/phpinfo.php:/var/www/html/phpinfo.php
+      #- ./share/phpmyadmin/phpinfo/phpinfo.php:/var/www/html/phpinfo.php
     ports:
       - 8080:80
     environment:

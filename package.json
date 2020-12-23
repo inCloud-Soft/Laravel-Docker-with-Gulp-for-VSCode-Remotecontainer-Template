@@ -1,0 +1,28 @@
+{
+  "name": "mail_commander",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-env": "^0.4.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "^4.1.0",
+    "gulp-shell": "^0.8.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-watch": "^5.0.1",
+    "merge-stream": "^2.0.0",
+    "mysql": "^2.18.1",
+    "util": "^0.12.3"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "createDb": "gulp createDb"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

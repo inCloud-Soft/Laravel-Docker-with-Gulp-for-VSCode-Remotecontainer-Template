@@ -31,3 +31,6 @@
 .idea/
 .DS_Store
 docker/share/db/data/
+package-lock.json
+node_modules/
+site/dist/

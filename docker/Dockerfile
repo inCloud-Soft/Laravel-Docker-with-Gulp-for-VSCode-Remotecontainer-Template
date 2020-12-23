@@ -6,11 +6,11 @@ FROM ubuntu:bionic
 # Ensure apt doesn't ask questions when installing stuff
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update \
+RUN apt-get update -y \
     && apt-get install -y --no-install-recommends software-properties-common \
     && add-apt-repository universe \
-    && apt dist-upgrade \
-    && apt-get update
+    && apt dist-upgrade -y \
+    && apt-get update -y
 
 # Install Ondrej repos for Ubuntu Bionic, PHP7.3, composer and selected extensions - better selection than
 # the distro's packages
@@ -67,12 +67,11 @@ RUN echo "zend_extension=/usr/lib/php/20190902/xdebug.so" > /etc/php/7.4/mods-av
 #     && apt-get clean \
 #     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-RUN apt-get install -y --no-install-recommends \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer global require hirak/prestissimo \
-    && composer clear-cache \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
+RUN apt-get install -y --no-install-recommends 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer 
+RUN composer clear-cache 
+RUN apt-get clean 
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
 SHELL ["/bin/bash", "-c"]
 RUN usermod -s /bin/bash root
@@ -85,9 +84,20 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | b
     && nvm install 13.11.0 \
     && nvm use 13.11.0
 
-COPY ./share/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
+# COPY ./share/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-EXPOSE 8000
+EXPOSE 80
+
+# RUN mkdir /var/www/dist/ && cd /var/www/dist/ \
+#     && composer create-project --prefer-dist laravel/laravel laravel \
+#     && cd /var/www/dist/laravel \
+#     && composer require laravel/jetstream \
+#     && php artisan jetstream:install livewire --teams \
+#     && npm install && npm run dev \
+#     && php artisan migrate
+# RUN cd /var/www/ \
+#     && npm install --save-dev gulp merge-stream
+
 RUN php -a
 ENV LANG en_US.UTF-8
 CMD apachectl -D FOREGROUND

@@ -1,18 +1,11 @@
 {
-	"containerEnv": {
-	},
-	
 	"remoteEnv": {
 		// in container env
-		"PROJECT_NAME": "new_project",
-		"WORKSPACE_TIMEZONE": "Europe/Moscow"
+		"WORKSPACE_TIMEZONE": "Europe/Moscow",
+		"PROJECT_NAME": "laravel"
 	},
 	
-	"name": "PHP-template",
-	// "build": {
-	// 	"dockerfile": "../docker/Dockerfile",
-	// 	"args": {}
-	// },
+	"name": "PHP74-laravel-template",
 	"dockerComposeFile": "../docker/docker-compose.yml",
 	"service": "apache2",
 	"workspaceFolder": "/",
@@ -29,12 +22,12 @@
 		"vincaslt.highlight-matching-tag"
 	],
 
-	"runArgs": [
+	// "runArgs": [
         //"-e", "PROJECT_NAME=new_project_my",
         //"-e", "WORKSPACE_TIMEZONE=Europe/Moscow",
         //"--env-file", "../docker/.env"
 		//"--env-file", "${localWorkspaceFolder}/.devcontainer/.env"
-    ],
+    // ],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

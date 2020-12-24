@@ -4,9 +4,8 @@ namespace App\Console\Commands;
 use App\Console\Commands\GeneratorsPath;
 use App\Console\Commands\GeneratorsPathHelper;
 use App\Console\Commands\GeneratorsMigratePath;
-use Illuminate\Support\Str;
-use Illuminate\Filesystem\Filesystem;
-//use Symfony\Component\Console\Input\InputOption;
+use App\Console\Commands\GeneratorsBatchMigratePath;
+use Symfony\Component\Console\Input\InputOption;
 
 use Illuminate\Foundation\Console\ModelMakeCommand as ModelCommand;
 use Illuminate\Routing\Console\ControllerMakeCommand as ControllerCommand;
@@ -22,6 +21,7 @@ use Illuminate\Foundation\Console\RuleMakeCommand as RuleCommand;
 use Illuminate\Foundation\Console\TestMakeCommand as TestCommand;
 use Illuminate\Routing\Console\MiddlewareMakeCommand as MiddlewareCommand;
 use Illuminate\Database\Console\Migrations\MigrateMakeCommand as MigrateCommand;
+use Illuminate\Queue\Console\BatchesTableCommand as BatchesCommand;
 
 trait MigrationGeneratorPath{
     use GeneratorsMigratePath;
@@ -96,3 +96,9 @@ class MigrateMakeCommand extends MigrateCommand
 {
     use MigrationGeneratorPath, GeneratorsPathHelper;
 }
+
+class BatchesTableCommand extends BatchesCommand
+{
+    use GeneratorsPathHelper, GeneratorsBatchMigratePath;
+}
+

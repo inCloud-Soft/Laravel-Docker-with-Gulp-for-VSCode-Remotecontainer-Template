@@ -15,6 +15,7 @@ use App\Console\Commands\ResourceMakeCommand;
 use App\Console\Commands\RuleMakeCommand;
 use App\Console\Commands\TestMakeCommand;
 use App\Console\Commands\MiddlewareMakeCommand;
+use App\Console\Commands\BatchesTableCommand;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
@@ -97,6 +98,9 @@ class ExtendGeneratorsServiceProvider extends ServiceProvider implements Deferra
             });
             $this->app->extend('command.make.middleware', function () {
                 return new MiddlewareMakeCommand;
+            });
+            $this->app->singleton('command.queue.batches-table', function ($app) {
+                return new BatchesTableCommand($app['files'], $app['composer']);
             });
         }
     }

@@ -2,6 +2,10 @@
 namespace App\Console\Commands;
 
 use App\Console\Commands\GeneratorsPath;
+use App\Console\Commands\GeneratorsPathHelper;
+use App\Console\Commands\GeneratorsMigratePath;
+use Illuminate\Support\Str;
+use Illuminate\Filesystem\Filesystem;
 //use Symfony\Component\Console\Input\InputOption;
 
 use Illuminate\Foundation\Console\ModelMakeCommand as ModelCommand;
@@ -17,63 +21,78 @@ use Illuminate\Foundation\Console\ResourceMakeCommand as ResourceCommand;
 use Illuminate\Foundation\Console\RuleMakeCommand as RuleCommand;
 use Illuminate\Foundation\Console\TestMakeCommand as TestCommand;
 use Illuminate\Routing\Console\MiddlewareMakeCommand as MiddlewareCommand;
+use Illuminate\Database\Console\Migrations\MigrateMakeCommand as MigrateCommand;
+
+trait MigrationGeneratorPath{
+    use GeneratorsMigratePath;
+}
 
 class ModelMakeCommand extends ModelCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class ControllerMakeCommand extends ControllerCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class SeederMakeCommand extends SeederCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class EventMakeCommand extends EventCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
+}
+
+class ExceptionMakeCommand extends ExceptionCommand
+{
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class JobMakeCommand extends JobCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class ListenerMakeCommand extends ListenerCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class ProviderMakeCommand extends ProviderCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class RequestMakeCommand extends RequestCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class ResourceMakeCommand extends ResourceCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class RuleMakeCommand extends RuleCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class TestMakeCommand extends TestCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
 }
 
 class MiddlewareMakeCommand extends MiddlewareCommand
 {
-    use GeneratorsPath;
+    use GeneratorsPath, GeneratorsPathHelper;
+}
+
+class MigrateMakeCommand extends MigrateCommand
+{
+    use MigrationGeneratorPath, GeneratorsPathHelper;
 }

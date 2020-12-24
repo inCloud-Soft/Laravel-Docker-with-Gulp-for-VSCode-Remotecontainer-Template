@@ -180,6 +180,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\ExtendGeneratorsServiceProvider::class,
+        App\Providers\ExtendMigrationServiceProvider::class,
 
         /*
          * Application Service Providers...

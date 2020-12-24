@@ -2,40 +2,11 @@
 namespace App\Console\Commands;
 
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
-use Illuminate\Foundation\Console\ModelMakeCommand as Command;
+
+
 trait GeneratorsPath{
-    
-    private $dist_conformation = false;
-
-    private function  getDistConformation(){
-        return $this->dist_conformation;
-    }
-
-    private function  setDistConformation(){
-        $this->dist_conformation = true;
-    }
-
-    protected function getFeaturePath($path, $name)
-    {
-        if (empty(config("app.features_path"))) {
-            $warning = "Did you miss FEATURES_PATH enviroment variable? Check for .env file in Laravel installation folder";
-            $this->alert("\033[01;31m $warning \033[0m");
-            exit;
-        }
-
-        $feature_path = rtrim(config("app.features_path"), '/') . "/" . $this->option('feature');
-        $path = Str::replaceFirst(base_path(), $feature_path, $path);
-        
-        if (! $this->files->isDirectory(dirname($path))) {
-            $this->files->makeDirectory(dirname($path), 0777, true, true);
-        }
-        return $path;
-    }
-
     /**
      * Get the destination class path (where to store a file).
      *
@@ -48,7 +19,7 @@ trait GeneratorsPath{
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
         if (($this->hasOption('feature') && $this->option('feature'))){
-            return $this->getFeaturePath(parent::getPath($original_name), $original_name);
+            return $this->getFeaturePath(parent::getPath($original_name));
         } 
 
         if($this->getDistConformation() || $this->Option('dist')){

@@ -1,5 +1,5 @@
 {
-  "name": "mail_commander",
+  "name": "Laravel",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -20,7 +20,8 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "createDb": "gulp createDb"
+    "createDb": "gulp createDb",
+    "init": "npm install && npm run createDb && cd ./site/dist && composer create-project --prefer-dist laravel/laravel laravel && cd ./laravel && composer require laravel/jetstream && php artisan jetstream:install livewire --teams && npm install && npm run dev"
   },
   "keywords": [],
   "author": "",

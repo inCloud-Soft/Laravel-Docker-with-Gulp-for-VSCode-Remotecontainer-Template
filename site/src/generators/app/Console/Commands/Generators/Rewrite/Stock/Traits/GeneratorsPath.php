@@ -1,10 +1,8 @@
 <?php
-namespace App\Console\Commands;
+namespace App\Console\Commands\Generators\Rewrite\Stock\Traits;
 
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Support\Str;
-
-
 
 trait GeneratorsPath{
     /**

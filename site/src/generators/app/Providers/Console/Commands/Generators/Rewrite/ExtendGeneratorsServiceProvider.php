@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Providers;
+namespace App\Providers\Console\Commands\Generators\Rewrite;
 
-use App\Console\Commands\ModelMakeCommand;
-use App\Console\Commands\ControllerMakeCommand;
-use App\Console\Commands\SeederMakeCommand;
-use App\Console\Commands\EventMakeCommand;
-use App\Console\Commands\ExceptionMakeCommand;
-use App\Console\Commands\JobMakeCommand;
-use App\Console\Commands\ListenerMakeCommand;
-use App\Console\Commands\ProviderMakeCommand;
-use App\Console\Commands\RequestMakeCommand;
-use App\Console\Commands\ResourceMakeCommand;
-use App\Console\Commands\RuleMakeCommand;
-use App\Console\Commands\TestMakeCommand;
-use App\Console\Commands\MiddlewareMakeCommand;
-use App\Console\Commands\BatchesTableCommand;
+use App\Console\Commands\Generators\Rewrite\Stock\{
+    ModelMakeCommand,
+    ControllerMakeCommand,
+    SeederMakeCommand,
+    EventMakeCommand,
+    ExceptionMakeCommand,
+    JobMakeCommand,
+    ListenerMakeCommand,
+    ProviderMakeCommand,
+    RequestMakeCommand,
+    ResourceMakeCommand,
+    RuleMakeCommand,
+    TestMakeCommand,
+    MiddlewareMakeCommand,
+    BatchesTableCommand
+};
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;

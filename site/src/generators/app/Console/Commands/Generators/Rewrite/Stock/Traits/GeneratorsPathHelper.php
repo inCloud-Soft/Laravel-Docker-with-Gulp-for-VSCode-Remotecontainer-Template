@@ -1,5 +1,5 @@
 <?php
-namespace App\Console\Commands;
+namespace App\Console\Commands\Generators\Rewrite\Stock\Traits;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;

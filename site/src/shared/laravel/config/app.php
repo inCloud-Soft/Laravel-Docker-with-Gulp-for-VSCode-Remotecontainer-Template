@@ -179,8 +179,9 @@ return [
         /*
          * Package Service Providers...
          */
-        App\Providers\ExtendGeneratorsServiceProvider::class,
-        App\Providers\ExtendMigrationServiceProvider::class,
+        App\Providers\Console\Commands\Generators\Rewrite\ExtendGeneratorsServiceProvider::class,
+        App\Providers\Console\Commands\Generators\Rewrite\ExtendMigrationServiceProvider::class,
+        App\Providers\Console\Commands\Generators\Rewrite\LivewireServiceProvider::class,
 
         /*
          * Application Service Providers...

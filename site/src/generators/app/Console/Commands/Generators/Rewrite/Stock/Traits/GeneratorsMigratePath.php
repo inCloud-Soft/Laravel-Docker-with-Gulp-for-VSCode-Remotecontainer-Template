@@ -1,8 +1,9 @@
 <?php
-namespace App\Console\Commands;
+namespace App\Console\Commands\Generators\Rewrite\Stock\Traits;
 
-use Illuminate\Database\Migrations\MigrationCreator;
+use App\Console\Commands\Generators\Rewrite\Stock\MigrationCreator;
 use Illuminate\Support\Composer;
+
 
 trait GeneratorsMigratePath{
     public function __construct(MigrationCreator $creator, Composer $composer)

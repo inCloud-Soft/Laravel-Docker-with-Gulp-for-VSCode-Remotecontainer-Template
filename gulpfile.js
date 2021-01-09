@@ -21,22 +21,18 @@ gulp.task('copySrc', function() {
 	pipes.push(gulp.src('site/src/generators/**/*')
 		  .pipe(gulp.dest('site/dist/laravel/')));
 	
-	pipes.push(gulp.src('site/src/shared/laravel/**/*')
-		  .pipe(gulp.dest('site/dist/laravel/')));
+	// pipes.push(gulp.src('site/src/generators_jetstream/**/*')
+	// 	  .pipe(gulp.dest('site/dist/laravel/')));
+	
+	// pipes.push(gulp.src('site/src/generators_orchid/**/*')
+	// 	  .pipe(gulp.dest('site/dist/laravel/')));
 
-  pipes.push(gulp.src('site/src/main_layout/**/*')
-		  .pipe(gulp.dest('site/dist/laravel/')));
-		
-  pipes.push(gulp.src('site/src/page_sites/**/*')
-      .pipe(gulp.dest('site/dist/laravel/')));
-      
-		
-  pipes.push(gulp.src('site/src/resources_site/**/*')
-      .pipe(gulp.dest('site/dist/laravel/')));
-      
-  pipes.push(gulp.src('site/src/main_menu/**/*')
-		  .pipe(gulp.dest('site/dist/laravel/')));
-		
+  // pipes.push(gulp.src('site/src/generators/**/*')
+	// 	  .pipe(gulp.dest('site/dist/laravel/')));
+	
+	// pipes.push(gulp.src('site/src/shared/laravel/**/*')
+	// 	  .pipe(gulp.dest('site/dist/laravel/')));
+
 	return merge(pipes);
 });
 
@@ -50,6 +46,7 @@ gulp.task('sassCompile', function () {
         .pipe(gulp.dest('site/dist/laravel/public/css'))
 
 })
+
 gulp.task('jsCompile', function () {
 
     // var errorFree = true;
@@ -119,7 +116,7 @@ gulp.task('createDb', function(done) {
   con.connect(function (err) {
     if (err) throw err;
     console.log("Connected!");
-    con.query(`CREATE DATABASE IF NOT EXISTS laravel CHARACTER SET utf32 COLLATE utf32_general_ci;`, function (err, result) {
+    con.query(`CREATE DATABASE IF NOT EXISTS laravel_template CHARACTER SET utf32 COLLATE utf32_general_ci;`, function (err, result) {
       if (err) throw err;
       console.log("Database created");
       con.end();

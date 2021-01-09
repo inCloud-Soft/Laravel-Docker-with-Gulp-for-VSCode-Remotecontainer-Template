@@ -17,10 +17,12 @@ trait GeneratorsPath{
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
         if (($this->hasOption('feature') && $this->option('feature'))){
+            $this->line(" >> " . $this->getFeaturePath(parent::getPath($original_name)));
             return $this->getFeaturePath(parent::getPath($original_name));
         } 
 
         if($this->getDistConformation() || $this->Option('dist')){
+            $this->line(" >> " . parent::getPath($name));
             return parent::getPath($name);
         } 
 

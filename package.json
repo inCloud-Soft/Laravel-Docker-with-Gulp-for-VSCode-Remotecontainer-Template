@@ -1,5 +1,5 @@
 {
-  "name": "patrol",
+  "name": "laravel_template",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -40,7 +40,14 @@
     "watch": "gulp watch",
     "watch_files": "gulp watch_files",
     "createDb": "gulp createDb",
-    "init": "npm install && npm run createDb && cd ./site/dist && composer create-project --prefer-dist laravel/laravel laravel && cd ./laravel && composer require laravel/jetstream && php artisan jetstream:install livewire --teams && npm install && npm run dev"
+    "init": "npm install && npm run createDb && cd ./site/dist && composer create-project --prefer-dist laravel/laravel laravel && cd ./laravel && npm install && npm run dev",
+    "init_with_orchid": "npm install && npm run createDb && cd ./site/dist && composer create-project --prefer-dist laravel/laravel laravel && cd ./laravel && npm install && npm run dev && composer require orchid/platform && php artisan orchid:install && php artisan orchid:link",
+    "init_with_orchid_after": "npm run createDb && cd ./site/dist/laravel && php artisan migrate && php artisan orchid:admin",
+    "init_with_jetstream": "npm install && npm run createDb && cd ./site/dist && composer create-project --prefer-dist laravel/laravel laravel && cd ./laravel && composer require laravel/jetstream && php artisan jetstream:install livewire --teams && npm install && npm run dev",
+    "install_jetstream": "cd ./site/dist/laravel && composer require laravel/jetstream && php artisan jetstream:install livewire --teams && npm install && npm run dev",
+    "install_orchid": "cd ./site/dist/laravel && npm run createDb && composer require orchid/platform && php artisan orchid:install",
+    "migrate": "npm run createDb && cd ./site/dist/laravel && php artisan migrate",
+    "dump_autoload": "cd ./site/dist/laravel && composer dump-autoload"
   },
   "keywords": [],
   "author": "",

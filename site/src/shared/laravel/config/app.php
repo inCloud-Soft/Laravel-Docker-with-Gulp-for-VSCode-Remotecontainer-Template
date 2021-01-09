@@ -177,11 +177,11 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
+         * SRC Service Providers...
          */
-        App\Providers\Console\Commands\Generators\Rewrite\ExtendGeneratorsServiceProvider::class,
-        App\Providers\Console\Commands\Generators\Rewrite\ExtendMigrationServiceProvider::class,
-        App\Providers\Console\Commands\Generators\Rewrite\LivewireServiceProvider::class,
+        //App\Providers\Console\Commands\Generators\Rewrite\ExtendGeneratorsServiceProvider::class,
+        //App\Providers\Console\Commands\Generators\Rewrite\ExtendMigrationServiceProvider::class,
+        //App\Providers\Console\Commands\Generators\Rewrite\OrchidServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -191,8 +191,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\FortifyServiceProvider::class,
-        App\Providers\JetstreamServiceProvider::class,
+        //App\Providers\FortifyServiceProvider::class,
+        //App\Providers\JetstreamServiceProvider::class,
 
     ],
 
